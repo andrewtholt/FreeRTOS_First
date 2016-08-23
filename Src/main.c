@@ -58,7 +58,23 @@ void MX_FREERTOS_Init(void);
 /* USER CODE END PFP */
 
 /* USER CODE BEGIN 0 */
-
+//
+// defaultDestination is set to point to the Q that, by default
+// a task should send messages to.
+//
+// The logic is this:
+// If the sender in a message was set to NULL,
+// ... and destination is set to NULL
+// ... send the response to defaultDestination
+// ... and set destination=defaultDestination
+//
+// If the sender in a message was set to NULL,
+// ... and destination is set
+// ... Send the response to desatination
+//
+// If the sender in a message was set
+// ... send a response to that.
+//
 struct taskSettings {
 	SemaphoreHandle_t lock;
 	QueueHandle_t iam;
