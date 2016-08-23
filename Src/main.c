@@ -58,18 +58,25 @@ void MX_FREERTOS_Init(void);
 /* USER CODE END PFP */
 
 /* USER CODE BEGIN 0 */
+
 struct taskSettings {
 	SemaphoreHandle_t lock;
 	QueueHandle_t iam;
 	QueueHandle_t destination;
 	QueueHandle_t defaultDestination ;
 };
+
 /* USER CODE END 0 */
 
-struct cmdMessage {
+struct payload {
 	uint8_t  cmd[2];
 	uint16_t addr;
 	uint8_t data;
+};
+
+struct cmdMessage {
+    QueueHandle_t sender;
+    struct payload message;
 };
 
 void initTaskSettings(struct taskSettings *tsk, QueueHandle_t me, QueueHandle_t dflt) {

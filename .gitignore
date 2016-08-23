@@ -1,1 +1,4 @@
-STM32F401RETx_FLASH.ld
+*.ld
+*.o
+*.bin
+*.elf
